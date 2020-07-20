@@ -1,0 +1,24 @@
+==== ERROR PHP DASAR =====
+
+
+====================================================================================================================================================================
+string(228) "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '9000, email = ERIKddw, jurusan = TKJ, ' at line 3"
+_____________________________________________________________________________________________________________________________________________________________________
+** Fix  
+kurang tanda kutip(') pada query mysql "function ubah" bagian UPDATE tb_mahasiswa SET nim = '$nim', dll....
+$query = "UPDATE tb_mahasiswa SET  
+              nim = '$nim',
+              name = '$name',
+              email = '$email',
+              jurusan = '$jurusan',
+              gambar = '$gambar'
+            
+            WHERE id = $id;
+            "; 
+
+
+====================================================================================================================================================================
+Fatal error: Uncaught Error: Call to undefined function query() in C:\xampp\htdocs\php_dasar-GIT\10.1 pertemuan 11 (UPDATE) - FIX\ubah.php:8 Stack trace: #0 {main} thrown in C:\xampp\htdocs\php_dasar-GIT\10.1 pertemuan 11 (UPDATE) - FIX\ubah.php on line 8
+_____________________________________________________________________________________________________________________________________________________________________
+** Fix 
+nama query di index.php, tidak sama dengan function query($data) yang berada pada file functions.php
