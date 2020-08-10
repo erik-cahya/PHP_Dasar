@@ -7,7 +7,7 @@ $db_conn = mysqli_connect(
   $database = "db_php-dasar"
 );
 
-// mekanisme function untuk query
+// mekanisme function untuk query / ambil data
 function query($mekanisme_query)
 {
   global $db_conn;
@@ -182,4 +182,23 @@ function search($pencarian)
           ";
 
   return query($query);
+}
+
+
+// function register
+function register($data)
+{
+  global $db_conn;
+
+  $username = strtolower($data["username"]);
+  $password = strtolower($data["password"]);
+  $password2 = strtolower($data["pass_verification"]);
+
+  // cek verifikasi password
+  if ($password !== $password2) {
+    echo "<script>
+          alert('Password yang anda masukkan tidak sama');
+          </script>
+    ";
+  };
 }
