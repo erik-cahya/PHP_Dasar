@@ -50,8 +50,8 @@ if (isset($_POST["register"])) {
             </li>
 
             <li>
-                <label for="pass_verification">Konfirmasi Password :</label>
-                <input type="password" name="pass_verification" id="pass_verification">
+                <label for="password2">Konfirmasi Password :</label>
+                <input type="password" name="password2" id="password2">
             </li>
 
             <li>

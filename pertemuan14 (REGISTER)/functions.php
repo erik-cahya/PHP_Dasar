@@ -184,21 +184,48 @@ function search($pencarian)
   return query($query);
 }
 
-
-// function register
+// function register 
+// function ini menerima inputan data dari $_POST dan ditangkan di sini dan dimasukkan ke dalan $data
 function register($data)
 {
   global $db_conn;
 
-  $username = strtolower($data["username"]);
-  $password = strtolower($data["password"]);
-  $password2 = strtolower($data["pass_verification"]);
+  // ambil data dari $_POST dan diambil oleh $data dan dimasukkan ke sini ($username, $password, $password2)
+  // stripslashes : untuk membersihkan backslash yang diinputkan oleh user
+  // strtolower : memaksa agar inputan user menjadi huruf kecil semua
+  // mysqli_real_escape_string : agar ketika user memasukkan tanda kutip('), maka tanda kutipnya akan disimpan di database secara aman & membutuhkan 2 parameter, yaitu koneksi dan data
+
+  $username = stripslashes(strtolower($data["username"]));
+  $password = mysqli_real_escape_string($db_conn, $data["password"]);
+  $password2 = mysqli_real_escape_string($db_conn, $data["password2"]);
+
+  // cek verifikasi username
+  // dengan cara query dlu datanya dan simpan di dalam variabel result
+  $result = mysqli_query($db_conn, "SELECT username FROM tb_users WHERE username = '$username'");
+
+  if (mysqli_fetch_assoc($result)) {
+    echo "<script>
+          alert('username sudah tersedia');
+          </script>";
+    return false;
+  };
+
+
 
   // cek verifikasi password
   if ($password !== $password2) {
     echo "<script>
           alert('Password yang anda masukkan tidak sama');
-          </script>
-    ";
+          </script>";
+
+    return false;
   };
+
+  // enkripsi password 
+  // password_hash : metode yang digunakan untuk meng-enkripsi password, & menggunakan 2 parameter, yaitu (password yang akan di enksripsi & algoritma yang akan digunakan )
+  $password = password_hash($password, PASSWORD_DEFAULT);
+
+  // masukkan data ke dalam database
+  mysqli_query($db_conn, "INSERT INTO tb_users VALUES('','$username','$password')");
+  return mysqli_affected_rows($db_conn);
 }
