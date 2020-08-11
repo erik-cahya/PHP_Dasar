@@ -1,0 +1,7 @@
+parameter setcoockie
+
+setcookie('namaVariabel','Value','waktu_expired')
+
+ex:
+setcookie('names','Erik','time()+60)
+//artinya sesi cookie akan bertahan selama 60 detik sebelum akan direset
