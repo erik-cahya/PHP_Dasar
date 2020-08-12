@@ -2,28 +2,15 @@
 // jalankan dulu session
 session_start();
 
-require 'functions.php';
-
 // cek dulu cookienya
 // jika ada cookie, maka jalankan session
-if(isset($_COOKIE['id']) && isset($_COOKIE['key']) )
+if(isset($_COOKIE['login']))
+// "login" adalah key dari setcookie()
 {
-    $id = $_COOKIE['id'];
-    $key = $_COOKIE['key'];
-
-    // sekarang kita akan mencari data mahasiswa yang sesuai dengan id diatas
-    // jika dapat, bandingkan usernamenya dengan $_COOKIE['key'] ini 
-
-    // ambil username berdasarkan id
-    $result = mysqli_query($db_conn, "SELECT username FROM tb_users WHERE id = $id");
-    $row = mysqli_fetch_assoc($result);
-
-    // cek kesamaan cookie dengan username
-    if( $key === hash('sha256', $row['username']) )
+    if($_COOKIE['login'] == true)
     {
-        $_SESSION['login'] = true;
+        $_SESSION['login'] == true;
     }
-
 }
 
 // jika user sudah melakukan login, maka user tidak dapat mengakses halaman login lagi
@@ -33,7 +20,7 @@ if (isset($_SESSION['login']))
     exit;
 }
 
-
+require 'functions.php';
 
 if (isset($_POST["login"])) {
 
@@ -62,8 +49,8 @@ if (isset($_POST["login"])) {
             if (isset($_POST["remember"])) 
             {
                 // buat cookie
-                setcookie('id',$row["id"], time() + 60);
-                setcookie('key', hash('sha256',$row['username']), time() + 60);
+                // setcookie() mempunyai 3 parameter : key, value, dan expired time
+                setcookie('login','true',time() + 60);
             }
 
             // header : adalah fungsi redirect ke halaman tertentu

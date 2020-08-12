@@ -3,10 +3,9 @@ session_start();
 
 // jika tidak ada user yang melakukan login, maka tendang ke login.php
 // atau agar user tidak bisa langsung mengakses index.php sebelum melakukan login terlebih dahulu
-if( !isset($_SESSION["login"] ))
-{
+if (!isset($_SESSION["login"])) {
   header("Location: login.php");
-  exit; 
+  exit;
 }
 
 // require & include dapat digunakan untuk menghubungkan 2 file index.php ke functions.php
@@ -43,7 +42,7 @@ if (isset($_POST["cari"])) {
 </head>
 
 <body>
-<a href="logout.php">Logout</a>
+  <a href="logout.php">Logout</a>
 
   <h1>List Daftar Mahasiswa !!</h1>
   <br>
@@ -58,7 +57,7 @@ if (isset($_POST["cari"])) {
   </form>
 
   <br>
-  <br>
+
 
   <table class="table table-bordered">
 
@@ -93,15 +92,11 @@ if (isset($_POST["cari"])) {
           <a href="delete.php?id=<?= $data_mhs["id"]; ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data ?');">Delete</a> |
           <br>|
 
-
           <a href="tambah.php">Add Data</a>|
         </td>
       </tbody>
 
-      <ul>
-        <label> Username </label>
-          <input type="input" name="id" id="id">
-      </ul>
+
 
 
       <?php $number++; ?>
