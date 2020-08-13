@@ -74,7 +74,7 @@ function upload()
     return false;
   }
 
-  // =============== cek apakah yang diupload   adalah gambar
+  // =============== cek apakah yang diupload adalah gambar
   // dengan cara mengecek ekstensi gambar yang diupload
   $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
 
