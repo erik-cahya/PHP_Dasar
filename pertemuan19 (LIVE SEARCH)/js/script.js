@@ -42,9 +42,9 @@ keyword.addEventListener('keyup', function(){
             // responseText : adalah berfungsi untuk melihat isi apapun dari sebuah sumber
             // ---------------------------------
             // console.log(xhr.responseText);
-            // ---------------------------------
+            // --------------------------------- 
 
-            
+            // innerHTML : adalah untuk menimpa file html yang ada dengan isi responseText/yang lainnya
             container.innerHTML = xhr.responseText;
 
         }
