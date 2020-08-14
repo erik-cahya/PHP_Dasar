@@ -1,0 +1,16 @@
+.loader{
+      position: absolute;
+      width: 150px;
+      z-index: -1;
+      top: 85px;
+      right: 650px;
+      display: none;
+}
+
+h1{ 
+    text-align: center;
+}
+
+table{
+     text-align: center;
+}

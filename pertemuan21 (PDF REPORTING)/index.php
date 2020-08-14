@@ -33,18 +33,9 @@ if (isset($_POST["cari"])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" href="css/index-style.css" type="text/css">
 
-  <style>
-    .loader{
-      position: absolute;
-      width: 150px;
-      z-index: -1;
-      top: 85px;
-      right: 650px;
-      display: none;
-    }
-  </style>
+  
 
   <!-- bootsrap css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
