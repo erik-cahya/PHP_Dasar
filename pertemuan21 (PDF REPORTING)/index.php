@@ -35,7 +35,7 @@ if (isset($_POST["cari"])) {
   <title>Document</title>
   <link rel="stylesheet" href="css/index-style.css" type="text/css">
 
-  
+
 
   <!-- bootsrap css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -44,7 +44,8 @@ if (isset($_POST["cari"])) {
 </head>
 
 <body>
-  <a href="logout.php">Logout</a>
+  <a href="logout.php" class="logout">Logout</a> |
+  <a href="print.php" target="_blank">Cetak PDF</a>
 
   <h1>List Daftar Mahasiswa !!</h1>
   <br>
@@ -53,14 +54,14 @@ if (isset($_POST["cari"])) {
 
 
 
-  <form action="" method="POST">
+  <form action="" method="POST" class="form-search">
     <!-- size : untuk mengatur ukuran panjang search -->
     <!-- autofocus : agar kolom search otomatis aktif ketika user masuk ke halaman site -->
     <!-- autocomplete="off  " : untuk menghilangkan history pencarian -->
     <input type="text" name="keyword" size="80" placeholder="Cari Data" autofocus autocomplete="off" id="keyword">
     <button type="submit" name="cari" id="tombol-cari">Search Data</button>
 
-  <img src="img/loader.gif" class="loader">
+    <img src="img/loader.gif" class="loader">
 
   </form>
 
@@ -70,50 +71,50 @@ if (isset($_POST["cari"])) {
 
   <br>
 
-<div id="container">
-  <table class="table table-bordered">
+  <div id="container">
+    <table class="table table-bordered">
 
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">NO</th>
-        <th scope="col">NIM</th>
-        <th scope="col">Nama</th>
-        <th scope="col">E-Mail</th>
-        <th scope="col">Jurusan</th>
-        <th scope="col">Profile Image</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">NO</th>
+          <th scope="col">NIM</th>
+          <th scope="col">Nama</th>
+          <th scope="col">E-Mail</th>
+          <th scope="col">Jurusan</th>
+          <th scope="col">Profile Image</th>
+          <th scope="col" class="action">Action</th>
+        </tr>
+      </thead>
 
-    <?php $number = 1; ?>
-    <?php foreach ($mahasiswa as $data_mhs) : ?>
+      <?php $number = 1; ?>
+      <?php foreach ($mahasiswa as $data_mhs) : ?>
 
-      <tbody>
-        <th scope="row"><?= $number; ?></th>
-        <td><?= $data_mhs["nim"]; ?></td>
-        <td><?= $data_mhs["name"]; ?></td>
-        <td><?= $data_mhs["email"]; ?></td>
-        <td><?= $data_mhs["jurusan"]; ?></td>
-        <td><img src="img/<?= $data_mhs["gambar"]; ?>" width="25"></td>
-        <td>
-          |
-          <a href="ubah.php?id=<?= $data_mhs["id"]; ?>">Edit</a> |
+        <tbody>
+          <th scope="row"><?= $number; ?></th>
+          <td><?= $data_mhs["nim"]; ?></td>
+          <td><?= $data_mhs["name"]; ?></td>
+          <td><?= $data_mhs["email"]; ?></td>
+          <td><?= $data_mhs["jurusan"]; ?></td>
+          <td><img src="img/<?= $data_mhs["gambar"]; ?>" width="25"></td>
+          <td class="action">
+            |
+            <a href="ubah.php?id=<?= $data_mhs["id"]; ?>">Edit</a> |
 
-          <!-- Implementasi hapus data ini, dengan cara mengirimkan data "id" yang tersimpan di dalam id $mahasiswa -->
-          <!-- onclick : berfungsi untuk menampilkan pesan konfirmasi sebelum terhapus dengan cara mengembalikkan nilai true ataupun false -->
-          <a href="delete.php?id=<?= $data_mhs["id"]; ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data ?');">Delete</a> |
-          <br>|
+            <!-- Implementasi hapus data ini, dengan cara mengirimkan data "id" yang tersimpan di dalam id $mahasiswa -->
+            <!-- onclick : berfungsi untuk menampilkan pesan konfirmasi sebelum terhapus dengan cara mengembalikkan nilai true ataupun false -->
+            <a href="delete.php?id=<?= $data_mhs["id"]; ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data ?');">Delete</a> |
+            <br>|
 
-          <a href="tambah.php">Add Data</a>|
-        </td>
-      </tbody>
-
-
-      <?php $number++; ?>
-    <?php endforeach; ?>
+            <a href="tambah.php">Add Data</a>|
+          </td>
+        </tbody>
 
 
-  </table>
+        <?php $number++; ?>
+      <?php endforeach; ?>
+
+
+    </table>
   </div>
 
 
@@ -121,13 +122,13 @@ if (isset($_POST["cari"])) {
 
 
 
-<!-- File JQuery -->
-<script src="js/jquery-3.5.1.min.js"></script>
+  <!-- File JQuery -->
+  <script src="js/jquery-3.5.1.min.js"></script>
 
 
-<!-- File Javascript -->
-<script src="js/script.js">
-</script>
+  <!-- File Javascript -->
+  <script src="js/script.js">
+  </script>
 </body>
 
 </html>
